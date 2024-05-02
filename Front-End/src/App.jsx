@@ -1,17 +1,14 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'
-import { login } from './pages/login'
-import { main } from './pages/app'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/login.jsx';
+import Main from './pages/app.jsx';
 
-function App() {
-
+export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={< login/>}/>
-        <Route path='/app' element={< main />}/>
+        <Route path="/" element={<Login />} />
+        <Route path="/app" element={<Main />} />
       </Routes>
     </Router>
-  )
+  );
 }
-
-export default App
