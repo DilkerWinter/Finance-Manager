@@ -1,7 +1,7 @@
 export function login() {
     return(
         <>
-            <h1>login</h1>        
+            <h1>Login Screen</h1>        
         </>
     )
 }
