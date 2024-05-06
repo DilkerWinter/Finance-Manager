@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-loginform',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './loginform.component.css'
 })
 export class LoginformComponent {
-
+  faCoffee = faCoffee;
 }
