@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-loginform',
@@ -11,5 +11,6 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './loginform.component.css'
 })
 export class LoginformComponent {
-  faCoffee = faCoffee;
+  faEnvelope = faEnvelope;
+  faLock = faLock;
 }

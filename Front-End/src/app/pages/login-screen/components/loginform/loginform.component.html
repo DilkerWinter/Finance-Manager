@@ -1,16 +1,22 @@
-<div class="h-screen w-screen flex justify-center items-center">
-    <div class="custom-container-size bg-gray-600">
-        <h1 class="text-center text-4xl text-white m-2">Login</h1>
+<div class="h-screen w-screen flex justify-center items-center bg-cover bg-no-repeat bg-center bg-login-bg">
+    <div class="custom-container-size bg-[#1e0147] rounded-3xl backdrop-blur-3xl border-solid border-4 border-[#5b1e83] shadow-2xl shadow-[#5b1e83]">
+        <h1 class="text-center text-5xl text-white mt-10">Login</h1>
         <form>
-            <div class="flex justify-center">
-                <input class="h-12 my-2 mx-2 w-96 border-gray-400 border-solid rounded-full pl-4 pr-2 text-lg"  type="text " placeholder="Email">
+            <div class="flex justify-center mt-8">
+                <div class="flex items-center">  
+                    <fa-icon [icon]="faEnvelope" style="color: #ac22a3;" class="fa-2x mr-2 absolute ml-[21.30rem]"></fa-icon>
+                    <input class="h-12 my-2 mx-2 w-96 border-gray-400 border-solid rounded-full pl-4 pr-2 text-lg"
+                           type="text" placeholder="Email">
+                </div>
             </div>
-            <div class="flex justify-center">
-                <fa-icon [icon]="faCoffee"></fa-icon>
-                <input class="h-12 my-2 mx-2 w-96 border-gray-400 border-solid rounded-full pl-4 pr-2 text-lg"  type="password" placeholder="Password">
+            <div class="flex justify-center mt-5">
+                <div class="flex items-center">  
+                    <fa-icon [icon]="faLock" style="color: #ac22a3;" class="fa-2x mr-2 absolute ml-[21.30rem]"></fa-icon>
+                    <input class="h-12 my-2 mx-2 w-96 border-gray-400 border-solid rounded-full pl-4 pr-2 text-lg"
+                           type="password" placeholder="Password">
+                </div>
             </div>
-            <button class="" type="submit">Create Account</button>
-            <p class="" >Already have a account?<a class="" href="#">Log In</a></p>
-        </form>my-2 mx-2 w-60 border-gray-400 border-solid rounded-md pl-1 pr-2 
+            <button class="text-white" type="submit">Create Account</button>
+        </form>
     </div>
 </div>
