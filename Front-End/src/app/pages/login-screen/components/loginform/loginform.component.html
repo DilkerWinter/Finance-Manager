@@ -1,11 +1,11 @@
 <div class="h-screen w-screen flex justify-center items-center bg-cover bg-no-repeat bg-center bg-login-bg">
-    <div class="custom-container-size bg-[#1e0147] rounded-3xl backdrop-blur-3xl border-solid border-4 border-[#5b1e83] shadow-2xl shadow-[#5b1e83]">
+    <div class="custom-container-size bg-white/[.3] rounded-3xl backdrop-blur-3xl border-solid border-4 border-[#5b1e83] shadow-2xl shadow-[#5b1e83]">
         <h1 class="text-center text-5xl text-white mt-10">Login</h1>
         <form>
             <div class="flex justify-center mt-8">
                 <div class="flex items-center">  
                     <fa-icon [icon]="faEnvelope" style="color: #ac22a3;" class="fa-2x mr-2 absolute ml-[21.30rem]"></fa-icon>
-                    <input class="h-12 my-2 mx-2 w-96 border-gray-400 border-solid rounded-full pl-4 pr-2 text-lg"
+                    <input class="h-12 my-2 mx-2 w-96 border-gray-400 border-solid rounded-full pl-4 pr-2 text-lg focus:outline-[#ac22a3]"
                            type="text" placeholder="Email">
                 </div>
             </div>
@@ -16,7 +16,10 @@
                            type="password" placeholder="Password">
                 </div>
             </div>
-            <button class="text-white" type="submit">Create Account</button>
+            <div class="flex justify-center mt-5">
+                <button class="text-white bg-gradient-to-r from-[#7c1f90] to-[#f926bb] h-12 w-96 text-lg rounded-full pr-2  "
+                 type="submit">Create Account</button>
+            </div>
         </form>
     </div>
 </div>
