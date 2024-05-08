@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/api/v1/User")
 public class UserControler {
@@ -14,6 +15,7 @@ public class UserControler {
         this.userService = userService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/newUser")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
         return userService.newUser(user);
