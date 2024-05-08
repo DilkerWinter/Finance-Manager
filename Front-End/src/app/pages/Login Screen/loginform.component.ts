@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 export class LoginformComponent {
   faEnvelope = faEnvelope;
   faLock = faLock;
-  warning:string = "Please verify your credentials"
+  warning:string = "";
 
 
   email: string = '';
