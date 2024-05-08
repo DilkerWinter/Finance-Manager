@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
-import { LoginScreenComponent } from './pages/login-screen/login-screen.component';
+import {} from './pages/Login Screen/loginform.component'
+import { RegisterformComponent } from './pages/Register Screen/registerform.component';
 import { FinanceManagerComponent } from './pages/finance-manager/finance-manager.component';
+import { LoginformComponent } from './pages/Login Screen/loginform.component';
 
 export const routes: Routes = [
-    { path: '', component: LoginScreenComponent},
+    { path: 'login', component: LoginformComponent},
+    { path: 'register', component: RegisterformComponent},
     { path: 'app', component: FinanceManagerComponent }, 
     { path: '**', redirectTo: '/' } 
 ];

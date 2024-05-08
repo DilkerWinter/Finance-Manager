@@ -1,0 +1,48 @@
+<div class="h-screen w-screen flex justify-center items-center bg-cover bg-no-repeat bg-center bg-login-bg">
+    <div 
+        class="custom-container-size-register bg-[#270459]]/[.4] rounded-3xl backdrop-blur-3xl border-solid border-4 border-purple-700 shadow-2xl shadow-purple-700">
+        <h1 
+            class="text-center text-5xl text-white mt-8 font-bold underline">Sign Up</h1>
+        <p class="text-center m-4" hidden>{{warning}}</p>
+        <form (ngSubmit)="onSubmit()">
+            <div class="flex justify-center mt-6">
+                <div class="flex items-center">  
+                    <fa-icon [icon]="faUser" style="color: #270459;" 
+                        class="fa-2x mr-2 absolute ml-[21.30rem]"></fa-icon>
+                    <input 
+                        [(ngModel)]="username" name="username"
+                        class="h-12 my-2 mx-2 w-96  border-solid rounded-full pl-4 pr-2 text-lg focus:outline-[#270459] focus:ring-[#270459] focus:ring-0"
+                        type="text" placeholder="Username" required>
+                </div>
+            </div>
+            <div class="flex justify-center mt-3">
+                <div class="flex items-center">  
+                    <fa-icon [icon]="faEnvelope" style="color: #270459;" 
+                        class="fa-2x mr-2 absolute ml-[21.30rem]"></fa-icon>
+                    <input 
+                        [(ngModel)]="email" name="email"
+                        class="h-12 my-2 mx-2 w-96  border-solid rounded-full pl-4 pr-2 text-lg focus:outline-[#270459] focus:ring-[#270459] focus:ring-0"
+                        type="email" placeholder="Email" required>
+                </div>
+            </div>
+            <div class="flex justify-center mt-5">
+                <div class="flex items-center">  
+                    <fa-icon [icon]="faLock" style="color: #270459;" 
+                        class="fa-2x mr-2 absolute ml-[21.30rem]"></fa-icon>
+                        <input 
+                        [(ngModel)]="password" name="password"
+                        class="h-12  mx-2 w-96 border-solid  border-2 rounded-full pl-4 pr-2 text-lg focus:border-[#270459] focus:outline-[#270459] "
+                        type="password" placeholder="Password" required>
+
+                </div>
+            </div>
+            <div class="flex justify-center mt-6">
+                <button
+                    type="submit"
+                    class="text-white text-xl bg-[#270459] h-12 w-96 rounded-full border-solid border-2 border-purple-700 hover:bg-gradient-to-r from-[#7c1f90] to-[#f926bb] hover:border-none " 
+                    >Register</button>
+            </div>
+                <p class="text-center m-3 text-white">Already have a account? <a [routerLink]="['/login']" class="text-[#f926bb] underline ">Sign In!</a></p>
+        </form>
+    </div>
+</div>
