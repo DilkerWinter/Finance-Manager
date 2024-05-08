@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Route, Router, RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEnvelope , faLock } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClient ,HttpClientModule } from '@angular/common/http';
+import { redirect } from 'react-router-dom';
 
 
 @Component({
@@ -18,16 +19,31 @@ export class LoginformComponent {
   faLock = faLock;
   warning:string = "";
 
+  constructor(private http: HttpClient , private router: Router){ }
 
   email: string = '';
   password: string = '';
 
   onSubmit(){
-    console.log("Email: ", this.email);
-    console.log("Password",  this.password);
+    const userData = {
+      userEmail: this.email.toLowerCase(),
+      userPassword: this.password
+    }
+
+    const loginAPI = 'http://localhost:3001/api/v1/User/userLogin';
+
+    this.http.post(loginAPI, userData)
+    .subscribe({
+      next: (response: any) => {    
+        console.log(response);  
+        this.warning = 'Logged';
+        this.router.navigate(['/app'])
+         
+      },
+      error: (error: any) => {
+        console.log(error);
+        this.warning = 'Invalid credentials';
+      }
+    });
   }
-
-
-
-
 }

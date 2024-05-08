@@ -41,7 +41,8 @@ public class UserControler {
         return userService.updateUserPassword(userId, userPassword);
     }
 
-    @GetMapping("/userLogin")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/userLogin")
     public ResponseEntity<Object> userLogin(@RequestBody LoginRequest loginRequest) {
         return userService.userLogin(loginRequest);
     }
