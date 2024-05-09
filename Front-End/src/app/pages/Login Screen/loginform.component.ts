@@ -4,8 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEnvelope , faLock } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule } from '@angular/forms';
 import { HttpClient ,HttpClientModule } from '@angular/common/http';
-import { redirect } from 'react-router-dom';
-
+import { AuthService } from '../../../services/authService'; 
 
 @Component({
   selector: 'app-loginform',
@@ -19,7 +18,7 @@ export class LoginformComponent {
   faLock = faLock;
   warning:string = "";
 
-  constructor(private http: HttpClient , private router: Router){ }
+  constructor(private http: HttpClient , private router: Router, private authService: AuthService){ }
 
   email: string = '';
   password: string = '';
@@ -37,6 +36,7 @@ export class LoginformComponent {
       next: (response: any) => {    
         console.log(response);  
         this.warning = 'Logged';
+        this.authService.login();
         this.router.navigate(['/app'])
          
       },
