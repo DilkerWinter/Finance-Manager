@@ -1,1 +1,17 @@
-<h1 class="text-center text-9xl mt-20">Logged in the system</h1>
+<h1 class="text-center text-4xl mt-20">Logged in the system</h1>
+
+
+<div class="text-center text-white bg-slate-800" *ngFor="let finance of finance">
+
+    <h2>{{ finance.title }}</h2>
+    <p>{{ finance.description}}</p>
+    <p>Date: {{ finance.date }}</p>
+    <p>Value: {{ finance.value }}</p>
+    <p>User ID: {{ finance.user.id }}</p>
+    <br>
+    <br>
+    <br>
+
+    </div>
+  
+<h2>Total Value: {{ totalValue }}</h2>

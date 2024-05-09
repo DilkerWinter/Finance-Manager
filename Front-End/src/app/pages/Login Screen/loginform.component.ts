@@ -36,7 +36,7 @@ export class LoginformComponent {
       next: (response: any) => {    
         console.log(response);  
         this.warning = 'Logged';
-        this.authService.login();
+        this.authService.login(response);
         this.router.navigate(['/app'])
          
       },

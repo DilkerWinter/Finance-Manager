@@ -19,7 +19,8 @@ public class FinanceControler {
     public ResponseEntity<Object> createFinance(@RequestBody Finance finance){
         return financeService.newFinance(finance);
     }
-
+    
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getFinancebyUserId/{userId}")
     public ResponseEntity<Object> GetFinancebyUserId(@PathVariable("userId") Integer userId){
         return financeService.GetFinanceByUserId(userId);

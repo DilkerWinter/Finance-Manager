@@ -4,19 +4,34 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private Authenticated: boolean = false;
+  private readonly AUTH_KEY_PREFIX = 'auth_token_';
+  private readonly CURRENT_USER_KEY = 'current_user_id';
 
   constructor() { }
 
-  login() {
-    this.Authenticated = true;
+  login(userID: string) {
+    sessionStorage.setItem(this.getAuthKey(userID), 'true');
+    sessionStorage.setItem(this.CURRENT_USER_KEY, userID);
   }
 
   logout() {
-    this.Authenticated = false;
+    const userID = this.getCurrentUserID();
+    if (userID) {
+      sessionStorage.removeItem(this.getAuthKey(userID));
+    }
+    sessionStorage.removeItem(this.CURRENT_USER_KEY);
   }
 
-  public isAuthenticated(): boolean {
-    return this.Authenticated;
+  isAuthenticated(): boolean {
+    const userID = this.getCurrentUserID();
+    return !!userID && this.getAuthKey(userID) in sessionStorage;
+  }
+
+  getCurrentUserID(): string | null {
+    return sessionStorage.getItem(this.CURRENT_USER_KEY);
+  }
+
+  private getAuthKey(userID: string): string {
+    return `${this.AUTH_KEY_PREFIX}${userID}`;
   }
 }
