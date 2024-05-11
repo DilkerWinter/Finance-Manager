@@ -4,12 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './Components/header/header.component';
 import { UserInfoComponent } from './Components/user-info/user-info.component';
+import { FinancecardsComponent } from './Components/financecards/financecards.component';
 
 @Component({
   selector: 'app-finance-manager',
   standalone: true,
   providers: [HttpClient],
-  imports: [CommonModule , HeaderComponent , UserInfoComponent],
+  imports: [CommonModule , HeaderComponent , UserInfoComponent ,FinancecardsComponent ],
   templateUrl: './finance-manager.component.html',
   styleUrl: './finance-manager.component.css'
 })

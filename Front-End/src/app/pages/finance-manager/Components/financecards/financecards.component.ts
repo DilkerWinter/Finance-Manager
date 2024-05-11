@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './financecards.component.css'
 })
 export class FinancecardsComponent {
+  financeTitle: string = "Teste de titulo";
+  financeDescription: string = "Teste de Descricao"
+  financeDate: Date = new Date(2010, 9, 10);
+  financeValue: number = 100.00;
 
 }

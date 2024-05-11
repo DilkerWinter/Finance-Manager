@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { UserService } from '../../../../services/userService.service';
 import { FinanceServiceService } from '../../../../services/financeService.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-user-info',
   standalone: true,
-  imports: [FontAwesomeModule , ],
+  imports: [FontAwesomeModule , NgClass],
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.css'
 })
@@ -63,7 +64,9 @@ export class UserInfoComponent implements OnInit{
       }
     } 
   }
-
+  getAbsoluteTotalBalance():number {
+    return Math.abs(this.totalBalance);
+  }
 
   calculateTotalEarned(){
     this.totalEarned = 0;
