@@ -4,10 +4,15 @@
 @tailwind utilities;
 
 
+@font-face {
+    font-family: "Horizon";
+    src: url('assets/fonts/horizon.otf') format('opentype');
+}
 
 * {
     font-family: "Poppins", sans-serif;
 }
+
 
 
 
@@ -19,4 +24,10 @@
 .custom-container-size-register {
     height: 30rem;
     width: 32rem;
+}
+
+.custom-container-size-user {
+    height: 20rem;
+    width: 26rem;
+
 }

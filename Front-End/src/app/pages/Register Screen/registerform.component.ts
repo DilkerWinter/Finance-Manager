@@ -21,6 +21,8 @@ export class RegisterformComponent {
   email: string = "";
   password: string = "";
 
+
+
   registerForm = new FormBuilder().group({
     username: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]], 
@@ -30,7 +32,7 @@ export class RegisterformComponent {
   constructor(private http: HttpClient){ }
 
   onSubmit() {
-
+      
     if (this.registerForm.valid) {
       const userData = {
         username: this.registerForm.value?.username?.toLowerCase(),

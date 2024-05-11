@@ -1,0 +1,15 @@
+<div class="bg-[#171139] rounded-3xl custom-container-size-user flex flex-col  m-11">
+    <div class="flex items-center justify-center ml-6 mr-6 mt-5 bg-[#291E56]/[0.5] rounded-2xl" >
+      <fa-icon [icon]="faUserCicle" style="color: #fff;" class="fa-3x items-center mr-6"></fa-icon>
+      <p class="text-3xl text-white mt">{{userName}}</p>
+    </div>
+
+    <br>
+
+    <div class="ml-6 mr-6 ">
+      <h2 class="text-white text-center text-2xl">Total Balance: <span class="text-green-600">R$ {{totalBalance.toFixed(2)}}</span></h2>
+      <p class="text-white text-center text-xl">Earned: <span class="text-green-600">R$ {{totalEarned.toFixed(2)}}</span></p>
+      <p class="text-white text-center text-xl">Expend: <span class="text-red-600">R$ {{totalExpend.toFixed(2)}}</span></p> 
+    </div>
+  </div>
+  
