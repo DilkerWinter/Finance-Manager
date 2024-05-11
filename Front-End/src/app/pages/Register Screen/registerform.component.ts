@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEnvelope, faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule, ReactiveFormsModule , FormBuilder, Validators} from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserService } from '../../services/userService.service';
 
 @Component({
   selector: 'app-registerform',
@@ -17,35 +18,30 @@ export class RegisterformComponent {
   faLock = faLock;
   faUser = faUser;
   warning: string = "";
-  username: string = "";
-  email: string = "";
-  password: string = "";
+  
+  
+  
 
 
 
-  registerForm = new FormBuilder().group({
+  registerForm = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(2)]],
-    email: ['', [Validators.required, Validators.email]], 
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(2)]]
   });
 
-  constructor(private http: HttpClient){ }
+  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
 
   onSubmit() {
-      
     if (this.registerForm.valid) {
-      const userData = {
-        username: this.registerForm.value?.username?.toLowerCase(),
-        email: this.registerForm.value?.email?.toLowerCase(),
-        password: this.registerForm.value.password
-      };
+      const username = this.registerForm.value.username || '';
+      const email = this.registerForm.value.email || '';
+      const password = this.registerForm.value.password || '';
 
-      const newUserAPI = 'http://localhost:3001/api/v1/User/newUser';
-
-      this.http.post(newUserAPI, userData)
+      this.userService.register(username, email, password)
         .subscribe({
-          next: (response: any) => {          
-            this.warning = 'Accont Created'; 
+          next: (response: any) => {
+            this.warning = 'Account Created';
           },
           error: (error: any) => {
             this.warning = 'Invalid or already existing account';

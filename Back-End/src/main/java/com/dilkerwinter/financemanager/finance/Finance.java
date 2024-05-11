@@ -25,7 +25,7 @@ public class Finance {
     private String date;
 
     @Column(nullable = false)
-    private Integer value;
+    private Double value;
 
     public Integer getId() {
         return id;
@@ -67,11 +67,11 @@ public class Finance {
         this.date = date;
     }
 
-    public Integer getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 }

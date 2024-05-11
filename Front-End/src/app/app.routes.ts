@@ -10,5 +10,5 @@ export const routes: Routes = [
     { path: 'login', component: LoginformComponent},
     { path: 'register', component: RegisterformComponent},
     { path: 'app', component: FinanceManagerComponent, canActivate: [AuthGuard] }, 
-    { path: '**', redirectTo: '/' } 
+    { path: '**', redirectTo: '/login' } 
 ];

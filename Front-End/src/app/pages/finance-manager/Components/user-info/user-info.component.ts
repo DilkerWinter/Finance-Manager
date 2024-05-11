@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {  faCircleUser } from '@fortawesome/free-solid-svg-icons';
-import { AuthService } from '../../../../../services/authService';
+import { AuthService } from '../../../../services/authService.service';
 import { HttpClient } from '@angular/common/http';
 import { OnInit } from '@angular/core';
-import { capitalizeString } from '../../../../../services/captalizeString'; 
+import { UserService } from '../../../../services/userService.service';
+import { FinanceServiceService } from '../../../../services/financeService.service';
 
 @Component({
   selector: 'app-user-info',
@@ -19,35 +20,70 @@ export class UserInfoComponent implements OnInit{
   totalBalance: number = 0;
   totalEarned: number = 0;
   totalExpend: number = 0;
+  financeData: any;
 
-
-  constructor(private authService: AuthService, private http: HttpClient){}
+  constructor(private authService: AuthService, private http: HttpClient,private userService: UserService, private financeService: FinanceServiceService){}
 
   userID: string | null = this.authService.getCurrentUserID();
 
   ngOnInit(): void {
-    
-    this.getUserById();
-
+    this.loadUserName();
+    this.loadFinanceData();
+  
   }
 
-  getUserById() {
-    if (this.userID) {
-      this.http.get<any>(`http://localhost:3001/api/v1/User/getUser/${this.userID}`)
-        .subscribe(
-          (data) => {
-            this.userName = capitalizeString(data.username);
-            console.log(this.userName);
-          },
-          (error) => {
-            console.log('Error fetching user data:', error);
-          }
-        );
-    } else {
-      console.log('User ID not available. Cannot fetch user information.');
+  loadUserName() {
+    this.userService.getUserNameById(this.userID ?? '').subscribe(
+      userName => {
+        this.userName = userName;
+      }
+    );
+  }
+
+  loadFinanceData() {
+    this.financeService.getFinancebyID(this.userID ?? '').subscribe(
+      (data) => {
+        this.financeData = data;
+        this.calculateTotalValue();
+        this.calculateTotalEarned();
+        this.calculateTotalExpend();
+      },
+      (error) => {
+        console.log('Error fetching finance data:', error);
+      }
+    );
+  }
+
+  calculateTotalValue(){
+    this.totalBalance = 0;
+    if (Array.isArray(this.financeData)) {
+      for (const finance of this.financeData) {
+        this.totalBalance += finance.value;
+        
+      }
+    } 
+  }
+
+
+  calculateTotalEarned(){
+    this.totalEarned = 0;
+    if (Array.isArray(this.financeData)){
+      for (const finance of this.financeData){
+        if (finance.value > 0){
+          this.totalEarned += finance.value;
+        }
+      }
     }
   }
 
-
-
+  calculateTotalExpend(){
+    this.totalExpend = 0;
+    if (Array.isArray(this.financeData)){
+      for (const finance of this.financeData){
+        if (finance.value < 0){
+          this.totalExpend += Math.abs(finance.value) ;
+        }
+      }
+    }
+  }
 }
