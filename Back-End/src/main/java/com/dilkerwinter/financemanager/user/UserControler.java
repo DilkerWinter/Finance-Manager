@@ -21,6 +21,7 @@ public class UserControler {
         return userService.newUser(user);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getUser/{userID}")
     public ResponseEntity<Object> getUserbyId(@PathVariable("userID") Integer userID) {
         return userService.getUserbyId(userID);
