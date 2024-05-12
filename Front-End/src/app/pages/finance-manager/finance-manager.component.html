@@ -11,12 +11,26 @@
             </div>
 
 
+            <div *ngIf="finance">
+                <div *ngFor="let item of finance.slice(financeIndex, financeIndex + 3); let i = index">
+                  <app-financecards [finance]="item"></app-financecards>
+                </div>
+              </div>
             
-            <app-financecards></app-financecards>
 
+            <div class="justify-center flex m-8">
+              <button class="text-xl" [disabled]="isPreviousDisabled()" (click)="onPrevious()">
+                <fa-icon [icon]="faCaretLeft" [style.color]="isPreviousDisabled() ? '#3730a3' : '#7e22ce'" class="fa-2x"></fa-icon>
+              </button>
+              <button class="ml-12 text-xl" [disabled]="isNextDisabled()" (click)="onNext()">
+                <fa-icon [icon]="faCaretRight" [style.color]="isNextDisabled() ? '#3730a3' : '#7e22ce'" class="fa-2x"></fa-icon>
+              </button>
+            </div>
+            
         </div>
         <div class="bg-green-500 flex-1">
             <p class="text-center">test</p>
+            
         </div>
     
 
