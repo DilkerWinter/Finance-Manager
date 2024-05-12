@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './Components/header/header.component';
 import { UserInfoComponent } from './Components/user-info/user-info.component';
 import { FinancecardsComponent } from './Components/financecards/financecards.component';
+import { FinanceServiceService } from '../../services/financeService.service';
 
 @Component({
   selector: 'app-finance-manager',
@@ -17,16 +18,32 @@ import { FinancecardsComponent } from './Components/financecards/financecards.co
 
 export class FinanceManagerComponent implements OnInit{
 
-  constructor(private authService: AuthService){}
+  userID: string | null = this.authService.getCurrentUserID();
+
+  constructor(private authService: AuthService, private financeService: FinanceServiceService){}
   
   finance:  any;
-  totalValue: number = 0;
+  currentIndex: number = 0;
+
 
   ngOnInit(): void {
-    
+    this.loadFinanceData();
+
   }
 
-
+  loadFinanceData() {
+    this.financeService.getFinancebyIdOrderbyDate(this.userID ?? '').subscribe(
+      (data) => {
+        this.finance = data;
+        console.log(this.finance[0]);
+        console.log(this.finance[1]);
+        console.log(this.finance[2]);
+      },
+      (error) => {
+        console.log('Error fetching finance data:', error);
+      }
+    );
+  }
 
 
 }

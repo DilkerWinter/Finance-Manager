@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,5 +49,13 @@ public class FinanceService {
             return ResponseEntity.ok("User deleted successfully");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Finance not found");
+    }
+
+    public ResponseEntity<Object> getFinanceByUserIdOrderByDate(Integer userId) {
+        List<Finance> userFinances = financeRepository.findByUserIdOrderByDate(userId);
+        if (userFinances.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User or Finance not found");
+        }
+        return new ResponseEntity<>(userFinances, HttpStatus.OK);
     }
 }

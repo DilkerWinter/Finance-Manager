@@ -35,4 +35,10 @@ public class FinanceControler {
     public ResponseEntity<Object> deleteFinance(@RequestBody Finance finance){
         return financeService.DeleteFinance(finance.getId());
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/getFinancebyUserIdOrderbyDate/{userId}")
+    public ResponseEntity<Object> GetFinancebyUserIdOrderbyDate(@PathVariable("userId") Integer userId){
+        return financeService.getFinanceByUserIdOrderByDate(userId);
+    }
 }

@@ -11,8 +11,9 @@ export class FinanceServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getFinancebyID(userID: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}getFinancebyUserId/${userID}`);
+  getFinancebyIdOrderbyDate(userID: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}getFinancebyUserIdOrderbyDate/${userID}`);
   }
+
   
 }

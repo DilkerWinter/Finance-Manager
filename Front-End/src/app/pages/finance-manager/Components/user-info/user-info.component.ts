@@ -42,7 +42,7 @@ export class UserInfoComponent implements OnInit{
   }
 
   loadFinanceData() {
-    this.financeService.getFinancebyID(this.userID ?? '').subscribe(
+    this.financeService.getFinancebyIdOrderbyDate(this.userID ?? '').subscribe(
       (data) => {
         this.financeData = data;
         this.calculateTotalValue();

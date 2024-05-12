@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-financecards',
@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './financecards.component.html',
   styleUrl: './financecards.component.css'
 })
-export class FinancecardsComponent {
-  financeTitle: string = "Teste de titulo";
-  financeDescription: string = "Teste de Descricao"
-  financeDate: Date = new Date(2010, 9, 10);
-  financeValue: number = 100.00;
+export class FinancecardsComponent implements OnInit{
+
+  ngOnInit(): void {
+    
+  }
 
 }

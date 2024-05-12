@@ -3,6 +3,8 @@ package com.dilkerwinter.financemanager.finance;
 import com.dilkerwinter.financemanager.user.User;
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "finance")
@@ -22,7 +24,7 @@ public class Finance {
     private String description;
 
     @Column(nullable = false)
-    private String date;
+    private Date date;
 
     @Column(nullable = false)
     private Double value;
@@ -59,11 +61,11 @@ public class Finance {
         this.description = description;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
