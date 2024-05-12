@@ -1,0 +1,32 @@
+
+.finance-card {
+    opacity: 0;
+    animation: fade-in 0.5s forwards;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+
+  .finance-card-fadeout {
+    animation: fade-out 0.5 backwards;
+  }
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  .no-delay {
+    animation-delay: 0 !important;
+  }

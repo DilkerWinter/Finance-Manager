@@ -25,6 +25,8 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
   faAngleRight = faAngleRight;
   faAngleLeft = faAngleLeft;
 
+  fadeOut: boolean = false;
+
   userID: string | null = this.authService.getCurrentUserID();
 
   constructor(private authService: AuthService, private financeService: FinanceServiceService , private cd: ChangeDetectorRef){}
@@ -59,6 +61,7 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
   onPrevious() {
     if (this.financeIndex - 3 >= 0) {
       this.financeIndex -= 3;
+      
       this.cd.detectChanges();
     }
   }
