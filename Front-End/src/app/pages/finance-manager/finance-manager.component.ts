@@ -8,12 +8,13 @@ import { FinancecardsComponent } from './Components/financecards/financecards.co
 import { FinanceServiceService } from '../../services/financeService.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCaretRight , faCaretLeft , faAngleRight , faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { GraphComponent } from './Components/graph/graph.component';
 
 @Component({
   selector: 'app-finance-manager',
   standalone: true,
   providers: [HttpClient , FontAwesomeModule],
-  imports: [CommonModule , HeaderComponent , UserInfoComponent ,FinancecardsComponent, FontAwesomeModule ],
+  imports: [CommonModule , HeaderComponent , UserInfoComponent ,FinancecardsComponent, FontAwesomeModule, GraphComponent ],
   templateUrl: './finance-manager.component.html',
   styleUrl: './finance-manager.component.css'
 })
