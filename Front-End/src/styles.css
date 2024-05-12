@@ -27,11 +27,14 @@
 }
 
 .custom-container-size-user {
-    height: 18rem;
     width: 26rem;
 
 }
 
 .custom-container-lastfinance {
+    width: 26rem;
+}
+
+.custom-container-finance-card {
     width: 26rem;
 }
