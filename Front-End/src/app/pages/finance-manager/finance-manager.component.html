@@ -13,7 +13,7 @@
 
             <div *ngIf="finance">
               <div *ngFor="let item of finance.slice(financeIndex, financeIndex + 3); let i = index">
-                <app-financecards [finance]="item" class="finance-card animate-fade-in" style="animation-delay: {{i * 0.5}}s; "></app-financecards>
+                <app-financecards [finance]="item" class="finance-card animate-fade-in" style="animation-delay: {{i * 0.6}}s; "></app-financecards>
               </div>
             </div>
             
@@ -33,7 +33,7 @@
         <div class="flex-1 mr-12">
             <app-graph></app-graph>
             <div class="flex justify-center mt-6">
-              <button class="text-white text-4xl bg-[#270459] rounded-full border-solid border-2 mt-4 h-16 w-80 border-purple-700 hover:bg-gradient-to-r from-[#7c1f90] to-[#f926bb] hover:border-none " >New Finance</button>
+              <button class="text-white text-4xl bg-[#270459] rounded-full border-solid border-2 mt-4 h-16 w-80  border-purple-700 hover:bg-gradient-to-r from-[#7c1f90] to-[#f926bb] hover:border-none " >New Finance</button>
           </div>
         </div>
     
