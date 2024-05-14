@@ -46,7 +46,7 @@ public class FinanceService {
         Optional<Finance> userFinance = financeRepository.findById(id);
         if (userFinance.isPresent()) {
             financeRepository.delete(financeRepository.findById(id).get());
-            return ResponseEntity.ok("User deleted successfully");
+            return ResponseEntity.ok("Finance deleted successfully");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Finance not found");
     }
