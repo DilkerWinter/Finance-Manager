@@ -84,5 +84,13 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
     }
   }
 
+  openDialog(): void {
+    let dialogRef = this.dialog.open(AddFinanceComponent);
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  
 
 }

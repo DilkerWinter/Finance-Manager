@@ -42,5 +42,15 @@
 .custom-container-graph {
     height: 39rem;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.custom-add-finance-container{
+    height: 25rem;
+    width: 50rem;
+}
+
+.mdc-dialog__surface {
+    background-color: #291E56 !important;
+    border-radius: 1.5rem !important;
+}
+  

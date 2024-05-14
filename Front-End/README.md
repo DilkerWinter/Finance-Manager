@@ -1,6 +1,5 @@
-# Front End For The Finance Manager App
+# Front End 
 
-![alt text](image.png)
+Created with: Angular | TailwindCss
 
-
-![alt text](image-1.png)
+Extra features: Angular Material | FontAwsome Icons

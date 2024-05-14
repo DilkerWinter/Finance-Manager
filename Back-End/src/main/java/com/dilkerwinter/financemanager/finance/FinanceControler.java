@@ -15,6 +15,7 @@ public class FinanceControler {
         this.financeService = financeService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/newFinance")
     public ResponseEntity<Object> createFinance(@RequestBody Finance finance){
         return financeService.newFinance(finance);
