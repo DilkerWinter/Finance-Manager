@@ -42,3 +42,5 @@
 .custom-container-graph {
     height: 39rem;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

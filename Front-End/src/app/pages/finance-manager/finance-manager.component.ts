@@ -9,6 +9,9 @@ import { FinanceServiceService } from '../../services/financeService.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCaretRight , faCaretLeft , faAngleRight , faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { GraphComponent } from './Components/graph/graph.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AddFinanceComponent } from './Components/add-finance/add-finance.component';
+
 
 @Component({
   selector: 'app-finance-manager',
@@ -29,7 +32,7 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
 
   userID: string | null = this.authService.getCurrentUserID();
 
-  constructor(private authService: AuthService, private financeService: FinanceServiceService , private cd: ChangeDetectorRef){}
+  constructor(private authService: AuthService, private financeService: FinanceServiceService , private cd: ChangeDetectorRef , public dialog: MatDialog){}
   
   finance:  any;
   financeIndex: number = 0;
