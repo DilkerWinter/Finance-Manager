@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {  faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../../../services/authService.service';

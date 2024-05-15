@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Route, Router, RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEnvelope , faLock } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule } from '@angular/forms';
-import { HttpClient ,HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../../services/authService.service';
 import { UserService } from '../../services/userService.service';
 
@@ -19,7 +18,7 @@ export class LoginformComponent {
   faLock = faLock;
   warning:string = "";
 
-  constructor(private http: HttpClient , private router: Router, private authService: AuthService,private userService: UserService){ }
+  constructor(private router: Router, private authService: AuthService,private userService: UserService){ }
 
   email: string = '';
   password: string = '';

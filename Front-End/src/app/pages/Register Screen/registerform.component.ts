@@ -3,13 +3,12 @@ import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEnvelope, faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule, ReactiveFormsModule , FormBuilder, Validators} from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/userService.service';
 
 @Component({
   selector: 'app-registerform',
   standalone: true,
-  imports: [FontAwesomeModule , RouterLink, FormsModule, HttpClientModule , ReactiveFormsModule],
+  imports: [FontAwesomeModule , RouterLink, FormsModule, ReactiveFormsModule],
   templateUrl: './registerform.component.html',
   styleUrl: './registerform.component.css'
 })
