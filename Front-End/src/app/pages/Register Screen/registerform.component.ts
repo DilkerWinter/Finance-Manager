@@ -42,6 +42,7 @@ export class RegisterformComponent {
         .subscribe({
           next: (response: any) => {
             this.warning = 'Account Created';
+            this.registerForm.reset();
           },
           error: (error: any) => {
             this.warning = 'Invalid or already existing account';

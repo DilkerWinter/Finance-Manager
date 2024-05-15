@@ -8,6 +8,7 @@ import { UserService } from '../../../../services/userService.service';
 import { FinanceServiceService } from '../../../../services/financeService.service';
 import { NgClass } from '@angular/common';
 
+
 @Component({
   selector: 'app-user-info',
   standalone: true,
@@ -30,7 +31,7 @@ export class UserInfoComponent implements OnInit{
   ngOnInit(): void {
     this.loadUserName();
     this.loadFinanceData();
-  
+   
   }
 
   loadUserName() {

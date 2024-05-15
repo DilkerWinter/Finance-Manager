@@ -12,12 +12,11 @@ import { GraphComponent } from './Components/graph/graph.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddFinanceComponent } from './Components/add-finance/add-finance.component';
 
-
 @Component({
   selector: 'app-finance-manager',
   standalone: true,
   providers: [HttpClient , FontAwesomeModule],
-  imports: [CommonModule , HeaderComponent , UserInfoComponent ,FinancecardsComponent, FontAwesomeModule, GraphComponent ],
+  imports: [CommonModule , HeaderComponent , UserInfoComponent ,FinancecardsComponent, FontAwesomeModule, GraphComponent, AddFinanceComponent ],
   templateUrl: './finance-manager.component.html',
   styleUrl: './finance-manager.component.css'
 })
@@ -88,7 +87,7 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
     let dialogRef = this.dialog.open(AddFinanceComponent);
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.ngOnInit();
     });
   }
   
