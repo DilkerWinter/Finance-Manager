@@ -15,7 +15,7 @@
 
             <div *ngIf="finance">
               <div *ngFor="let item of finance.slice(financeIndex, financeIndex + 3); let i = index">
-                <app-financecards [finance]="item" class="finance-card animate-fade-in" style="animation-delay: {{i * 0.6}}s; "></app-financecards>
+                <app-financecards [finance]="item" (click)="openFinanceDialog(item)" class="finance-card animate-fade-in" style="animation-delay: {{i * 0.6}}s; "></app-financecards>
               </div>
             </div>
             

@@ -11,7 +11,7 @@ import { faCaretRight , faCaretLeft , faAngleRight , faAngleLeft } from '@fortaw
 import { GraphComponent } from './Components/graph/graph.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddFinanceComponent } from './Components/add-finance/add-finance.component';
-
+import { UpdateFinanceComponent } from './update-finance/update-finance.component';
 
 @Component({
   selector: 'app-finance-manager',
@@ -30,6 +30,7 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
   faAngleRight = faAngleRight;
   faAngleLeft = faAngleLeft;
 
+
   fadeOut: boolean = false;
 
   userID: string | null = this.authService.getCurrentUserID();
@@ -38,6 +39,9 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
   
   finance:  any;
   financeIndex: number = 0;
+
+  financeDialogData: any | null = null;
+
 
   ngOnInit(): void {
     this.loadFinanceData();
@@ -96,4 +100,11 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
   }
   
 
+  openFinanceDialog(finance: any) {
+    this.financeDialogData = finance;
+    this.dialog.open(UpdateFinanceComponent, {
+      data: finance,
+      width: '400px' // Tamanho desejado para o dialog
+    });
+  }
 }
