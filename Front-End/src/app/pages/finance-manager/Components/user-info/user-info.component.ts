@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {  faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../../../services/authService.service';
-import { HttpClient } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { UserService } from '../../../../services/userService.service';
 import { FinanceServiceService } from '../../../../services/financeService.service';
@@ -24,14 +23,13 @@ export class UserInfoComponent implements OnInit{
   totalExpend: number = 0;
   financeData: any;
 
-  constructor(private authService: AuthService, private http: HttpClient,private userService: UserService, private financeService: FinanceServiceService){}
+  constructor(private authService: AuthService, private userService: UserService, private financeService: FinanceServiceService){}
 
   userID: string | null = this.authService.getCurrentUserID();
 
   ngOnInit(): void {
     this.loadUserName();
     this.loadFinanceData();
-   
   }
 
   loadUserName() {
@@ -55,6 +53,7 @@ export class UserInfoComponent implements OnInit{
       }
     );
   }
+
 
   calculateTotalValue(){
     this.totalBalance = 0;
@@ -89,5 +88,9 @@ export class UserInfoComponent implements OnInit{
         }
       }
     }
+  }
+
+  reloadData() {
+    this.loadFinanceData();
   }
 }

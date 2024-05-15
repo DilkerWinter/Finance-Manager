@@ -1,4 +1,4 @@
-import { Component, OnInit , OnChanges , SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit , OnChanges , SimpleChanges, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/authService.service';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -12,16 +12,19 @@ import { GraphComponent } from './Components/graph/graph.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddFinanceComponent } from './Components/add-finance/add-finance.component';
 
+
 @Component({
   selector: 'app-finance-manager',
   standalone: true,
   providers: [HttpClient , FontAwesomeModule],
-  imports: [CommonModule , HeaderComponent , UserInfoComponent ,FinancecardsComponent, FontAwesomeModule, GraphComponent, AddFinanceComponent ],
+  imports: [CommonModule , HeaderComponent , UserInfoComponent ,FinancecardsComponent, FontAwesomeModule, GraphComponent ],
   templateUrl: './finance-manager.component.html',
   styleUrl: './finance-manager.component.css'
 })
 
 export class FinanceManagerComponent implements OnInit , OnChanges{
+  @ViewChild(UserInfoComponent) userInfoComponent!: UserInfoComponent;
+
   faCaretRight = faCaretRight;
   faCaretLeft = faCaretLeft;
   faAngleRight = faAngleRight;
@@ -38,13 +41,14 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
 
   ngOnInit(): void {
     this.loadFinanceData();
-
+    this.userInfoComponent.reloadData();
   }
 
   loadFinanceData() {
     this.financeService.getFinancebyIdOrderbyDate(this.userID ?? '').subscribe(
       (data) => {
         this.finance = data;
+        console.log(this.finance)
       },
       (error) => {
         console.log('Error fetching finance data:', error);

@@ -3,7 +3,9 @@
     
     <div class="flex">
         <div class="inline-block">
-            <app-user-info></app-user-info>
+          <div *ngIf="finance">
+            <app-user-info ></app-user-info>
+          </div>
             <div class="bg-[#171139] rounded-3xl flex flex-col justify-center mt-3 custom-container-lastfinance  mx-auto">
                 <div class="flex justify-center items-center m-3 bg-[#291E56]/[0.5] rounded-2xl">
                     <h1 class="text-center text-white font-semibold text-3xl m-2">Last Finances</h1>
