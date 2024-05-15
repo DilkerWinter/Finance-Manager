@@ -11,7 +11,7 @@ import { faCaretRight , faCaretLeft , faAngleRight , faAngleLeft } from '@fortaw
 import { GraphComponent } from './Components/graph/graph.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddFinanceComponent } from './Components/add-finance/add-finance.component';
-import { UpdateFinanceComponent } from './update-finance/update-finance.component';
+import { UpdateFinanceComponent } from './Components/update-finance/update-finance.component';
 
 @Component({
   selector: 'app-finance-manager',
@@ -52,10 +52,8 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
     this.financeService.getFinancebyIdOrderbyDate(this.userID ?? '').subscribe(
       (data) => {
         this.finance = data;
-        console.log(this.finance)
       },
       (error) => {
-        console.log('Error fetching finance data:', error);
       }
     );
   }
@@ -102,9 +100,12 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
 
   openFinanceDialog(finance: any) {
     this.financeDialogData = finance;
-    this.dialog.open(UpdateFinanceComponent, {
+    let dialogRef = this.dialog.open(UpdateFinanceComponent, {
       data: finance,
-      width: '400px' // Tamanho desejado para o dialog
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
     });
   }
 }

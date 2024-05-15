@@ -20,5 +20,13 @@ export class FinanceServiceService {
     return this.http.get<any>(`${this.baseUrl}getFinancebyUserIdOrderbyDate/${userID}`);
   }
 
+  deleteFinance(financeID: string): Observable<any>{
+    return this.http.delete<any>(`${this.baseUrl}deleteFinance/${financeID}`);
+  }
   
+  patchFinance(financeID: string , data: any): Observable<any>{
+    return this.http.patch<any>(`${this.baseUrl}updateFinance` , data);
+  }
+
+
 }

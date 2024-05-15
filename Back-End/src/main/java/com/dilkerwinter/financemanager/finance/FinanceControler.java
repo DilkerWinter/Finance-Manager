@@ -27,14 +27,16 @@ public class FinanceControler {
         return financeService.GetFinanceByUserId(userId);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PatchMapping("/updateFinance")
     public ResponseEntity<Object> updateFinance(@RequestBody Finance finance){
         return financeService.UpdateFinance(finance);
     }
 
-    @DeleteMapping("/deleteFinance")
-    public ResponseEntity<Object> deleteFinance(@RequestBody Finance finance){
-        return financeService.DeleteFinance(finance.getId());
+    @CrossOrigin(origins = "http://localhost:4200")
+    @DeleteMapping("/deleteFinance/{financeId}")
+    public ResponseEntity<Object> deleteFinance(@PathVariable("financeId") Integer financeId){
+        return financeService.DeleteFinance(financeId);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

@@ -1,0 +1,36 @@
+<div class="relative">
+    <button (click)="closeDialog()" class="absolute top-0 right-0  m-4 text-white text-xl"><fa-icon [icon]="faXmark" style="color: #171139" class="fa-xl"></fa-icon></button>
+    <div class="custom-add-finance-container">
+        <h1 class="text-center text-5xl m-5 text-white">Update Finance</h1>
+        <p  class="text-center text-red-500">{{warning}}</p>
+    <div class="m-5">
+        <form (ngSubmit)="updateFinance()">
+            <div class="flex justify-between m-4">
+                <div>
+                    <p class="text-white text-xl">Name</p>
+                    <input class="h-8 w-52 mt-2 rounded-2xl pl-4 pr-2"  name="title" type="text" placeholder="Finance title" required [(ngModel)]="title">
+                </div>
+                <div class="">
+                    <p class="text-white text-xl">Date</p>
+                    <input class="h-8 w-52 mt-2 rounded-2xl pl-4 pr-2"  name="inputdate" type="date" required [(ngModel)]="inputdate">
+                </div>
+            </div>
+            <div class="flex justify-between m-4">
+                <div>
+                    <p class="text-white text-xl">Description</p>
+                    <input class="h-8 w-52 mt-2 rounded-2xl pl-4 pr-2"  name="description" type="text" placeholder="(Optional)" [(ngModel)]="description">
+                </div>
+                <div>
+                    <p class="text-white text-xl">Value</p>
+                    <input class="h-8 w-52 mt-2 rounded-2xl pl-4 pr-2 " name="value" type="number" step="0.01" required [(ngModel)]="value">
+                </div>
+            </div>
+
+            <div class="flex justify-between mt-12 m-4">
+                <button class="text-white text-2xl bg-red-700 rounded-full border-solid border-2 mt-4 h-12 w-48  border-red-700 hover:border-none " (click)="deleteFinance()">Delete</button>
+                <button type="submit" class="text-white text-2xl bg-[#270459] rounded-full border-solid border-2 mt-4 h-12 w-48  border-purple-700 hover:bg-gradient-to-r from-[#7c1f90] to-[#f926bb] hover:border-none ">Update</button>
+            </div>
+
+        </form>
+    </div>    
+</div>
