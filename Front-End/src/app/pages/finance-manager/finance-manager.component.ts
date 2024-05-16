@@ -89,7 +89,7 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
     }
   }
 
-  openDialog(): void {
+  openAddFinanceDialog(): void {
     let dialogRef = this.dialog.open(AddFinanceComponent);
   
     dialogRef.afterClosed().subscribe(result => {
@@ -98,7 +98,7 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
   }
   
 
-  openFinanceDialog(finance: any) {
+  openUpdateFinanceDialog(finance: any) {
     this.financeDialogData = finance;
     let dialogRef = this.dialog.open(UpdateFinanceComponent, {
       data: finance,

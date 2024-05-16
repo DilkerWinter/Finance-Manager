@@ -28,5 +28,9 @@ export class FinanceServiceService {
     return this.http.patch<any>(`${this.baseUrl}updateFinance` , data);
   }
 
+  getFinanceByUserIdAndMonthAndYear(userId: string | null, month: number, year: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}getFinancebyDate?userId=${userId}&month=${month}&year=${year}`);
+  }
+  
 
 }

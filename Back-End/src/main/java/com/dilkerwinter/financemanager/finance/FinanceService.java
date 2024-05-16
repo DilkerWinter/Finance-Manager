@@ -1,6 +1,8 @@
 package com.dilkerwinter.financemanager.finance;
 
+import com.dilkerwinter.financemanager.user.UserRepository;
 import com.dilkerwinter.financemanager.user.UserService;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +16,12 @@ import java.util.Optional;
 public class FinanceService {
 
     private final FinanceRepository financeRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public FinanceService(FinanceRepository financeRepository, UserService userService) {
+    public FinanceService(FinanceRepository financeRepository, UserService userService, UserRepository userRepository) {
         this.financeRepository = financeRepository;
+        this.userRepository = userRepository;
     }
 
     public ResponseEntity<Object> newFinance(Finance finance) {
@@ -58,4 +62,13 @@ public class FinanceService {
         }
         return new ResponseEntity<>(userFinances, HttpStatus.OK);
     }
+
+    public ResponseEntity<Object> findByUserIdAndMonthAndYear(Integer userId, int month, int year) {
+        List<Finance> finances = financeRepository.findByUserIdAndMonthAndYear(userId, month, year);
+        if (finances.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.OK).body("Null");
+        }
+        return new ResponseEntity<>(finances, HttpStatus.OK);
+    }
+
 }
