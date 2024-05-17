@@ -3,32 +3,32 @@
 </p> 
 
 ## 📖 Descrição
-- Projeto Full Stack, utilizando Java Spring, Angular e PostgreSQL.
-- Gerenciador de Finanças com Gráfico.
-- REST API
-- WebSite
-- Interface para criar, alterar, deletar e visualizar finanças.
-- Extras: TailwinCSS, FontAwsome, Chart.js
+- Projeto Full Stack, utilizando Java Spring, Angular e PostgreSQL.- Desenvolvimento de um gerenciador de finanças com gráfico.
+- Implementação de uma REST API.
+- Criação de um website para acesso às funcionalidades.
+- Desenvolvimento de uma interface para criar, alterar, deletar e visualizar finanças.
+- Extras: Utilização de Tailwind CSS para estilização, Font        Awesome para ícones e Chart.js para os gráficos.
 
 ## 📷 Galeria
 
-### Tela de Login
+
+### <p align="center">Tela de Login</p>
 
 ![alt text](images/login.png)
 
-### Tela de Registro
+### <p align="center">Tela de Registro</p>
 
 ![alt text](images/register.png)
 
-### Tela do App
+### <p align="center">Tela do App</p>
 
 ![alt text](images/app.png)
 
-### Cadastrar nova Finança
+### <p align="center">Cadastrar nova Finança</p>
 
 ![alt text](images/newfinance.png)
 
-### Atualizar Finança
+### <p align="center">Atualizar Finança</p>
 
 ![alt text](images/updatefinance.png)
 
@@ -38,7 +38,7 @@
 - Node
 - Angular 17
 - JDK 22
-- PostgresSQL 16
+- PostgreSQL 16
 
 
 ## 📝 Aprendizados
@@ -51,7 +51,7 @@
 - TypeScript
 - TailwindCSS 
 - Chart.js - Grafico
-- FontAwsome - Icones
+- FontAwsome - Ícones
 - Angular Material - Dialogs
 - Git - Versionamento com múltiplas branches
 - Github - Repositorio remoto
