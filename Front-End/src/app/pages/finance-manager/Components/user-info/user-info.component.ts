@@ -64,6 +64,7 @@ export class UserInfoComponent implements OnInit{
       }
     } 
   }
+  
   getAbsoluteTotalBalance():number {
     return Math.abs(this.totalBalance);
   }
