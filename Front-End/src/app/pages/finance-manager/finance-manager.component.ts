@@ -24,6 +24,7 @@ import { UpdateFinanceComponent } from './Components/update-finance/update-finan
 
 export class FinanceManagerComponent implements OnInit , OnChanges{
   @ViewChild(UserInfoComponent) userInfoComponent!: UserInfoComponent;
+  @ViewChild(GraphComponent) GraphComponent!: GraphComponent;
 
   faCaretRight = faCaretRight;
   faCaretLeft = faCaretLeft;
@@ -46,6 +47,7 @@ export class FinanceManagerComponent implements OnInit , OnChanges{
   ngOnInit(): void {
     this.loadFinanceData();
     this.userInfoComponent.reloadData();
+    this.GraphComponent.reloadGraph();
   }
 
   loadFinanceData() {

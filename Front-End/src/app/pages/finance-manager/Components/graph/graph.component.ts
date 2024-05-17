@@ -2,7 +2,6 @@ import { Component, AfterViewInit, ViewChild, ElementRef, OnInit } from '@angula
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { FinanceServiceService } from '../../../../services/financeService.service';
 import { AuthService } from '../../../../services/authService.service';
-import { last } from 'rxjs';
 
 Chart.register(...registerables);
 
@@ -13,51 +12,66 @@ Chart.register(...registerables);
   styleUrls: ['./graph.component.css']
 })
 export class GraphComponent implements AfterViewInit, OnInit {
-
-
   @ViewChild('myChart') myChart!: ElementRef;
-
-  constructor(private financeService: FinanceServiceService, private authService: AuthService){ }
-
+  chart: Chart | undefined;
   userID: string | null = this.authService.getCurrentUserID();
+  financeData: any;
+  totalMonthValues: number[] = new Array(12).fill(0);
 
+  constructor(private financeService: FinanceServiceService, private authService: AuthService) { }
 
-
-  
   ngOnInit(): void {
+    this.fetchFinanceData();
+  }
+
+  fetchFinanceData(): void {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth() + 1; 
-  
-    const pastYear = currentMonth === 1 ? currentYear - 1 : currentYear;
-    const pastMonth = currentMonth === 1 ? 12 : currentMonth - 1;
-  
-    for (let year = currentYear; year >= pastYear; year--) {
-      const endMonth = (year === currentYear) ? currentMonth : 12;
-      const startMonth = (year === pastYear) ? pastMonth : 1;
-  
-      for (let month = endMonth; month >= startMonth; month--) {
-        this.financeService.getFinanceByUserIdAndMonthAndYear(this.userID, month, year).subscribe(
-          (data) => {
-            console.log(data)
-          },
-          (error) => {
-            console.error(error);
+    const currentMonth = currentDate.getMonth() + 1;
+
+    let monthsToFetch = 12;
+
+    for (let i = 0; i < monthsToFetch; i++) {
+      const date = new Date(currentYear, currentMonth - i - 1);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const currentIndex = monthsToFetch - i - 1;
+
+      this.financeService.getFinanceByUserIdAndMonthAndYear(this.userID, month, year).subscribe(
+        (data) => {
+          this.financeData = data;
+          console.log(`Dados para ${year}-${month}`);
+          this.calculateTotalValue(currentIndex);
+          console.log(`Valores totais atualizados:`, this.totalMonthValues);
+
+          // Re-render the chart after data is updated
+          if (i === monthsToFetch - 1) {
+            this.renderChart();
           }
-        );
+        },
+        (error) => {
+          console.error(`Erro ao buscar dados para ${year}-${month}:`, error);
+        }
+      );
+    }
+  }
+
+  calculateTotalValue(index: number): void {
+    this.totalMonthValues[index] = 0;
+    if (Array.isArray(this.financeData)) {
+      for (const finance of this.financeData) {
+        this.totalMonthValues[index] += finance.value;
       }
     }
   }
 
+  ngAfterViewInit(): void {
+    this.renderChart();
+  }
 
-
-
-
-  ngAfterViewInit() {
-
+  renderChart(): void {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
-
 
     const colors = {
       purple: {
@@ -72,12 +86,12 @@ export class GraphComponent implements AfterViewInit, OnInit {
       }
     };
 
-    const weight = [300, 500, 400, 300, 350, 300, 450, 300, 380, 400, 300, 350];
+    const weight = this.totalMonthValues;
 
-    const labels = [];
+    const months = [];
     for (let i = 0; i < 12; i++) {
-      const month = (currentMonth - i + 12) % 12; 
-      labels.unshift(new Intl.DateTimeFormat('en', { month: 'long' }).format(new Date(currentDate.getFullYear(), month)));
+      const month = (currentMonth - i + 12) % 12;
+      months.unshift(new Intl.DateTimeFormat('en', { month: 'long' }).format(new Date(currentDate.getFullYear(), month)));
     }
 
     const ctx = this.myChart.nativeElement.getContext('2d');
@@ -85,16 +99,19 @@ export class GraphComponent implements AfterViewInit, OnInit {
       return;
     }
 
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
     const gradient = ctx.createLinearGradient(0, 25, 0, 300);
     gradient.addColorStop(0, colors.purple.half);
     gradient.addColorStop(0.34, colors.purple.quarter);
     gradient.addColorStop(1, colors.purple.zero);
-    
 
     const config: ChartConfiguration = {
       type: 'line',
       data: {
-        labels: labels,
+        labels: months,
         datasets: [{
           fill: true,
           backgroundColor: gradient,
@@ -108,7 +125,6 @@ export class GraphComponent implements AfterViewInit, OnInit {
         }]
       },
       options: {
-
         animation: {
           duration: 0
         },
@@ -134,7 +150,6 @@ export class GraphComponent implements AfterViewInit, OnInit {
             }
           },
           y: {
-
             beginAtZero: true,
             title: {
               display: true,
@@ -153,6 +168,10 @@ export class GraphComponent implements AfterViewInit, OnInit {
       }
     };
 
-    new Chart(ctx, config);
+    this.chart = new Chart(ctx, config);
+  }
+
+  reloadGraph(): void {
+    this.fetchFinanceData();
   }
 }
