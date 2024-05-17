@@ -105,7 +105,6 @@ export class GraphComponent implements AfterViewInit, OnInit {
 
     const gradient = ctx.createLinearGradient(0, 25, 0, 300);
     gradient.addColorStop(0, colors.purple.half);
-    gradient.addColorStop(0.34, colors.purple.quarter);
     gradient.addColorStop(1, colors.purple.zero);
 
     const config: ChartConfiguration = {
