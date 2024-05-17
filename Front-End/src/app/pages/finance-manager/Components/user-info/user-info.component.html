@@ -1,0 +1,15 @@
+<div class="bg-[#171139] rounded-3xl custom-container-size-user flex flex-col mt-6 ml-12 mr-12">
+    <div class="flex items-center justify-center ml-5 mr-5 mt-5 mb-2 bg-[#291E56]/[0.5] rounded-2xl" >
+      <fa-icon [icon]="faUserCicle" style="color: #fff;" class="fa-3x items-center ml-3 mr-6"></fa-icon>
+      <p class="text-3xl text-white font-semibold" >{{userName}}</p>
+    </div>
+
+    <br>
+
+    <div class="ml-5 mr-5 mb-5 bg-[#291E56]/[0.5] rounded-2xl">
+      <h2 class="text-white text-3xl ml-3 mt-2 text-center">Total: <span [ngClass]="{'text-red-600': totalBalance< 0, 'text-green-600': totalBalance > 0}">{{ totalBalance < 0 ? '-R$ ' : 'R$ ' }}{{getAbsoluteTotalBalance().toFixed(2)}}</span></h2>
+      <p class="text-white text-xl ml-3 mt-2 text-center">Earned: <span class="text-green-600">+R$ {{totalEarned.toFixed(2)}}</span></p>
+      <p class="text-white text-xl ml-3 mt-2 mb-3 text-center">Expend: <span class="text-red-600">-R$ {{totalExpend.toFixed(2)}}</span></p> 
+    </div>
+  </div>
+  

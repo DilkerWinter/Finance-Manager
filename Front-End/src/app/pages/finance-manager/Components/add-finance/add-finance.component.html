@@ -1,0 +1,35 @@
+<div class="relative">
+    <button (click)="closeDialog()" class="absolute top-0 right-0  m-4 text-white text-xl"><fa-icon [icon]="faXmark" style="color: #171139" class="fa-xl"></fa-icon></button>
+    <div class="custom-add-finance-container">
+        <h1 class="text-center text-5xl m-5 text-white">New Finance</h1>
+        <p [ngClass]="{'text-red-700': warning === 'Please fill all the fields correctly', 'text-green-700': warning === 'New Finance Created'}" class="text-center text-red-500">{{warning}}</p>
+    <div class="m-5">
+        <form (ngSubmit)="addFinance()">
+            <div class="flex justify-between m-4">
+                <div>
+                    <p class="text-white text-xl">Name</p>
+                    <input class="h-8 w-52 mt-2 rounded-2xl pl-4 pr-2" [(ngModel)]="title" name="title" type="text" placeholder="Finance title" required>
+                </div>
+                <div class="">
+                    <p class="text-white text-xl">Date</p>
+                    <input class="h-8 w-52 mt-2 rounded-2xl pl-4 pr-2" [(ngModel)]="inputdate" name="inputdate" type="date" required>
+                </div>
+            </div>
+            <div class="flex justify-between m-4">
+                <div>
+                    <p class="text-white text-xl">Description</p>
+                    <input class="h-8 w-52 mt-2 rounded-2xl pl-4 pr-2" [(ngModel)]="description" name="description" type="text" placeholder="(Optional)">
+                </div>
+                <div>
+                    <p class="text-white text-xl">Value</p>
+                    <input class="h-8 w-52 mt-2 rounded-2xl pl-4 pr-2 " [(ngModel)]="value" name="value" type="number" step="0.01" required>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-12">
+                <button type="submit" class="text-white text-2xl bg-[#270459] rounded-full border-solid border-2 mt-4 h-12 w-48  border-purple-700 hover:bg-gradient-to-r from-[#7c1f90] to-[#f926bb] hover:border-none ">Create</button>
+            </div>
+
+        </form>
+    </div>    
+</div>

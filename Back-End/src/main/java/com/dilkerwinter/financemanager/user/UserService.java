@@ -69,7 +69,7 @@ public class UserService {
         User user = userOptional.get();
         if(user.getPassword().equals(PasswordEncrypt.encrypt(loginRequest.getUserPassword()))) {
 
-            return ResponseEntity.ok(user);
+            return ResponseEntity.ok(user.getId());
         }else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Incorrect password");
         }

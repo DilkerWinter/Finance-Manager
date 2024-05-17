@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/api/v1/User")
 public class UserControler {
@@ -14,11 +15,13 @@ public class UserControler {
         this.userService = userService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/newUser")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
         return userService.newUser(user);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getUser/{userID}")
     public ResponseEntity<Object> getUserbyId(@PathVariable("userID") Integer userID) {
         return userService.getUserbyId(userID);
@@ -39,7 +42,8 @@ public class UserControler {
         return userService.updateUserPassword(userId, userPassword);
     }
 
-    @GetMapping("/userLogin")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/userLogin")
     public ResponseEntity<Object> userLogin(@RequestBody LoginRequest loginRequest) {
         return userService.userLogin(loginRequest);
     }
