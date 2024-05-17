@@ -53,7 +53,7 @@
 - Chart.js - Grafico
 - FontAwsome - Icones
 - Angular Material - Dialogs
-- Git - Versionamento com multiplas branchs
+- Git - Versionamento com múltiplas branches
 - Github - Repositorio remoto
 - Java
 - Spring
@@ -73,6 +73,8 @@ Este projeto poderá ser atualizado, com algumas metas:
 
 - [ ] Melhoria no Gráfico
 - [ ] Criar Popup para Alterar Nome e Senha do Usuário
+- [ ] Criar Gráfico mostrando todos os gastos dos últimos 12 meses
+- [ ] Criar Gráfico mostrando todos os ganhos dos últimos 12 meses
 - [ ] Adicionar Novas Funcionalidades
 
 ## 🤖 Tecnologias
