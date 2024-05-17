@@ -3,7 +3,8 @@
 </p> 
 
 ## 📖 Descrição
-- Projeto Full Stack, utilizando Java Spring, Angular e PostgreSQL.- Desenvolvimento de um gerenciador de finanças com gráfico.
+- Projeto Full Stack, utilizando Java Spring, Angular e PostgreSQL.
+- Desenvolvimento de um gerenciador de finanças com gráfico.
 - Implementação de uma REST API.
 - Criação de um website para acesso às funcionalidades.
 - Desenvolvimento de uma interface para criar, alterar, deletar e visualizar finanças.
