@@ -45,17 +45,14 @@
 ## 📝 Aprendizados
 
 - Kanban
-- Agile Scrum 
 - Diagramas 
-- WorkFlow
 - Angular
 - TypeScript
 - TailwindCSS 
 - Chart.js - Grafico
 - FontAwsome - Ícones
 - Angular Material - Dialogs
-- Git - Versionamento com múltiplas branches
-- Github - Repositorio remoto
+- Git - Versionamento com múltiplas branchs
 - Java
 - Spring
 - CRUD
